@@ -1,6 +1,6 @@
 {
   "author": "doinki",
-  "bugs": "https://github.com/doinki/act-ui-icons/issues",
+  "bugs": "https://github.com/doinki/act-icons/issues",
   "devDependencies": {
     "@types/react": "^17.0.38",
     "react": "^17.0.2",
@@ -10,15 +10,15 @@
   "files": [
     "build"
   ],
-  "homepage": "https://github.com/doinki/act-ui-icons#readme",
+  "homepage": "https://github.com/doinki/act-icons#readme",
   "license": "MIT",
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
-  "name": "@aui/icons",
+  "name": "act-icons",
   "peerDependencies": {
     "react": "^17"
   },
-  "repository": "git@github.com:doinki/act-ui-icons.git",
+  "repository": "git@github.com:doinki/act-icons.git",
   "scripts": {
     "build": "yarn build:cjs && yarn build:esm",
     "build:cjs": "tsc --declaration false --outDir build/cjs -m CommonJS -t ES2020",
