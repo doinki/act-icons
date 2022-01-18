@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "jsx": "react-jsx",
+    "lib": ["DOM", "ES2020"],
+    "module": "ES2020",
+    "moduleResolution": "Node",
+    "noEmitOnError": true,
+    "outDir": "build/esm",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES6"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/material-design-icons"]
+}

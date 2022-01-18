@@ -1,0 +1,4 @@
+[submodule "src/material-design-icons"]
+	path = src/material-design-icons
+	url = https://github.com/google/material-design-icons.git
+  ignore = all
