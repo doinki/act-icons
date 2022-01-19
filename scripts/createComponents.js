@@ -1,4 +1,9 @@
-const { appendFileSync, readdirSync, readFileSync, rmSync } = require('fs');
+const {
+  appendFileSync,
+  readdirSync,
+  readFileSync,
+  truncateSync,
+} = require('fs');
 const { resolve } = require('path');
 
 const deprecatedAttributes = require('./deprecatedAttributes.json');
@@ -34,7 +39,7 @@ function* getFiles(path) {
   }
 }
 
-rmSync(dist);
+truncateSync(dist, 0);
 
 for (const path of getFiles(src)) {
   const result =
