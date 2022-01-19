@@ -1,6 +1,8 @@
 const { appendFileSync, readdirSync, readFileSync, rmSync } = require('fs');
 const { resolve } = require('path');
 
+const deprecatedAttributes = require('./deprecatedAttributes.json');
+
 const dist = resolve(__dirname, '..', 'src', 'index.tsx');
 const src = resolve(__dirname, '..', 'src', 'material-design-icons', 'src');
 
@@ -44,11 +46,18 @@ for (const path of getFiles(src)) {
 
   const { 1: name, 2: option, input } = result;
 
+  const regexp = new RegExp(
+    ` (?:${deprecatedAttributes.join('|')}|xmlns:xlink)="[\\w\\s#-./:]+"`,
+    'g'
+  );
+  const svg = readFileSync(input, 'utf8')
+    .replace(regexp, '')
+    .replace(/([a-z]+)-([a-z])/g, (_, b, c) => b + c.toUpperCase())
+    .replace(/\s*></, ' {...props}><');
+
   const fullName =
     name.split('_').reduce((prev, cur) => prev + capitalize(cur), '') +
     (option === 'twotone' ? 'TwoTone' : 'Outlined');
-
-  const svg = readFileSync(input, 'utf8').replace(/\w+:\w+="[\w#./:]+"/g, '');
 
   const component = `export const ${fullName} = (props: React.SVGProps<SVGSVGElement>) => ${svg};
 `;
