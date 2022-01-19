@@ -10,8 +10,8 @@
     "outDir": "build/esm",
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES6"
+    "target": "ES5"
   },
-  "include": ["src/**/*"],
-  "exclude": ["src/material-design-icons"]
+  "exclude": ["src/material-design-icons"],
+  "include": ["src/**/*"]
 }
