@@ -51,6 +51,7 @@ for (const path of getFiles(src)) {
 
   const { 1: name, 2: option, input } = result;
 
+  // TODO: Apply svgo
   const regexp = new RegExp(
     ` (?:${deprecatedAttributes.join('|')}|xmlns:xlink)="[\\w\\s#-./:]+"`,
     'g'
@@ -58,7 +59,12 @@ for (const path of getFiles(src)) {
   const svg = readFileSync(input, 'utf8')
     .replace(regexp, '')
     .replace(/([a-z]+)-([a-z])/g, (_, b, c) => b + c.toUpperCase())
-    .replace(/\s*></, ' {...props}><');
+    .replace(/\s*></, ' {...props}><')
+    .replace(
+      /height="\w+"/,
+      'fill="currentColor" focusable="false" height="1em" tabIndex={-1}'
+    )
+    .replace(/width="\w+"/, 'width="1em" aria-hidden="true"');
 
   const fullName =
     name.split('_').reduce((prev, cur) => prev + capitalize(cur), '') +
