@@ -62,7 +62,7 @@ for (const path of getFiles(src)) {
     .replace(/\s*></, ' {...props}><')
     .replace(
       /height="\w+"/,
-      'fill="currentColor" focusable="false" height="1em" tabIndex={-1}'
+      'fill="currentColor" focusable="false" height="1em"'
     )
     .replace(/width="\w+"/, 'width="1em" aria-hidden="true"');
 
